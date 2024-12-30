@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*,
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: cornsilk;
+  }
+
+header{
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 15px;
+    display: flex;
+    background-color: rgb(118, 118, 78);
+}
+
+header a{
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+  } 
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgb(93, 156, 156);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.container h2 {
+    padding: 20px;
+    text-align: center;
+    background-color: #bbd671;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+select{
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.form-section{
+    display: none;
+}
+
+form {
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* Mengatur kolom menggunakan Flexbox */
+.kolom {
+    display: flex;
+    flex-direction: column; /* Mengatur elemen dalam kolom */
+    margin-bottom: 20px;
+}
+
+/* Styling untuk label */
+.kolom label {
+    font-weight: bold;
+    margin-bottom: 8px;  /* Memberikan jarak antara label dan input */
+}
+
+/* Styling untuk input dan textarea */
+.kolom input[type="text"],
+.kolom input[type="month"],
+.kolom textarea {
+    width: 100%;  /* Membuat lebar input dan textarea mengikuti lebar form */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;  /* Border yang lebih halus */
+    margin-bottom: 10px;  /* Memberikan jarak antara elemen */
+    box-sizing: border-box;  /* Agar padding dan border dihitung dalam lebar elemen */
+}
+
+.kolom input[type="file"] {
+    width: 40%;  /* Membuat lebar input dan textarea mengikuti lebar form */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;  /* Border yang lebih halus */
+    margin-bottom: 10px;  /* Memberikan jarak antara elemen */
+    box-sizing: border-box;  /* Agar padding dan border dihitung dalam lebar elemen */
+    background-color: white;
+}
+
+/* Styling untuk tombol */
+form button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Tombol berwarna hijau */
+    color: white;
+    border: none;
+    text-align: center;
+    transition: .2s;
+}
+
+form button:hover {
+    background-color: #45a049;  /* Tombol berubah warna saat hover */
+    transition: .2s;
+}

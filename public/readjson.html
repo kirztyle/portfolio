@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Data Viewer</title>
+  <link rel="stylesheet" href="/CSS/CMSView.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Content Management System</h1>
+    <div> 
+      <a href="cms.html">Tambah Data</a>
+      <a href="index.html">Ke halaman user</a>
+    </div>
+  </div>
+  <header>JOB LIST</header>
+  <div id="data-container"></div>
+
+  <!-- Form untuk update data pekerjaan -->
+  <div id="update-form-container">
+    <h2>Update Job</h2>
+    <form id="update-job-form">
+      <div class="form-group">
+        <label for="job-title">Job Title:</label>
+        <input type="text" id="job-title" name="job-title" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="job-description">Job Description:</label>
+        <textarea id="job-description" name="job-description" required></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="join-date">Join Date:</label>
+        <input type="month" id="join-date" name="join-date" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="end-date">End Date:</label>
+        <input type="month" id="end-date" name="end-date" required>
+      </div>
+  
+      <div class="form-actions">
+        <button type="submit">Update</button>
+        <button type="button" onclick="closeUpdateForm()">Close</button>
+      </div>
+    </form>
+  </div>
+  
+
+  <script>
+    // Fungsi untuk membaca data dari file JSON
+    fetch('jobhist.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('data-container');
+        data.forEach((item) => {
+          const jobDiv = document.createElement('div');
+          jobDiv.className = 'job';
+
+          // Struktur HTML dengan gambar di samping teks dan tombol hapus serta update
+          jobDiv.innerHTML = `
+            <div class="job-content">
+              <h3>Job Title: ${item['job-title']}</h3>
+              <p><strong>Description:</strong> ${item['job-description']}</p>
+              <p><strong>Join Date:</strong> ${item['join-date']}</p>
+              <p><strong>End Date:</strong> ${item['end-date']}</p>
+              <p><strong>Attachment:</strong> <a href="${item.attachment.path}" target="_blank">Lihat Gambar</a></p>
+              <button class="delete-btn" onclick="deleteJob('${item['job-title']}')">Hapus</button>
+              <button class="update-btn" onclick="updateJob('${item['job-title']}')">Update</button>
+            </div>
+            <img src="${item.attachment.path}" alt="Attachment Image" class="job-image">
+          `;
+          container.appendChild(jobDiv);
+        });
+      })
+      .catch(error => console.error('Error loading JSON data:', error));
+
+    // Fungsi untuk menghapus pekerjaan berdasarkan job title
+    function deleteJob(jobTitle) {
+      fetch('jobhist.json')
+        .then(response => response.json())
+        .then(data => {
+          const updatedData = data.filter(item => item['job-title'] !== jobTitle);
+
+          fetch('/delete-job-history', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData),
+          })
+          .then(response => response.json())
+          .then(result => {
+            if (result.success) {
+              alert('Pekerjaan berhasil dihapus!');
+              location.reload();
+            } else {
+              alert('Terjadi kesalahan saat menghapus pekerjaan.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan saat menghapus pekerjaan.');
+          });
+        })
+        .catch(error => console.error('Error loading JSON data:', error));
+    }
+
+    // Fungsi untuk menampilkan form update dan mengisi dengan data pekerjaan yang dipilih
+    function updateJob(jobTitle) {
+  console.log('Tombol Update diklik untuk pekerjaan:', jobTitle); // Menambahkan log
+  fetch('jobhist.json')
+    .then(response => response.json())
+    .then(data => {
+      const job = data.find(item => item['job-title'] === jobTitle);
+      if (job) {
+        // Mengisi form dengan data yang sudah ada
+        document.getElementById('job-title').value = job['job-title'];
+        document.getElementById('job-description').value = job['job-description'];
+        document.getElementById('join-date').value = job['join-date'];
+        document.getElementById('end-date').value = job['end-date'];
+
+        // Menampilkan form update
+        document.getElementById('update-form-container').style.display = 'block';
+
+        // Menangani pengiriman form update
+        document.getElementById('update-job-form').onsubmit = function(event) {
+          event.preventDefault();
+          const updatedJob = {
+            'job-title': document.getElementById('job-title').value,
+            'job-description': document.getElementById('job-description').value,
+            'join-date': document.getElementById('join-date').value,
+            'end-date': document.getElementById('end-date').value,
+            attachment: job.attachment, // Mempertahankan attachment yang lama
+          };
+
+          // Update data yang ada di array
+          const updatedData = data.map(item => {
+            if (item['job-title'] === jobTitle) {
+              return updatedJob; // Mengupdate data yang sesuai
+            }
+            return item; // Data lainnya tetap tidak berubah
+          });
+
+          // Mengirimkan data yang sudah diperbarui ke server
+          fetch('/jobhist', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData), // Mengirimkan seluruh data dengan yang sudah diperbarui
+          })
+          .then(response => response.json())
+          .then(result => {
+            alert(result.message);
+            location.reload(); // Reload halaman untuk menampilkan data terbaru
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan saat memperbarui pekerjaan.');
+          });
+        };
+      }
+    })
+    .catch(error => console.error('Error loading JSON data:', error));
+}
+
+// Fungsi untuk menutup form update
+    function closeUpdateForm() {
+      document.getElementById('update-form-container').style.display = 'none';
+    }
+  </script>
+
+  <header>SKILLS LIST</header>
+  <div id="service-container"></div>
+
+  <script>
+    // Fungsi untuk membaca data dari file JSON
+    fetch('myservice.json')
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('service-container');
+        data.forEach(item => {
+          const jobDiv = document.createElement('div');
+          jobDiv.className = 'service';
+
+          // Struktur HTML dengan gambar di samping teks
+          jobDiv.innerHTML = `
+            <div class="service-content">
+              <h3>Job Title: ${item['service-title']}</h3>
+              <p><strong>Description:</strong> ${item['service-description']}</p>
+              <p><strong>Join Date:</strong> ${item['service-tools']}</p>
+              <p><strong>Attachment:</strong> <a href="${item.attachment.path}" target="_blank">Lihat Gambar</a></p>
+              <button class="delete-btn" onclick="deleteService('${item['service-title']}')">Hapus</button>
+            </div>
+            <img src="${item.attachment.path}" alt="Attachment Image" class="service-image">
+          `;
+          container.appendChild(jobDiv);
+        });
+      })
+      .catch(error => console.error('Error loading JSON data:', error));
+
+    // Fungsi untuk menghapus pekerjaan berdasarkan service title
+    function deleteService(serviceTitle) {
+      fetch('myservice.json')
+        .then(response => response.json())
+        .then(data => {
+          const updatedData = data.filter(item => item['service-title'] !== serviceTitle);
+
+          fetch('/delete-service-history', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedData),
+          })
+          .then(response => response.json())
+          .then(result => {
+            if (result.success) {
+              alert('Service berhasil dihapus!');
+              location.reload();
+            } else {
+              alert('Terjadi kesalahan saat menghapus service.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan saat menghapus service.');
+          });
+        })
+        .catch(error => console.error('Error loading JSON data:', error));
+    }
+  </script>
+</body>
+</html>

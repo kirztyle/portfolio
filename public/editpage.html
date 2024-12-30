@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Job Data</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Edit Job Data</h1>
+  <form id="edit-form">
+    <div>
+      <label for="job-title">Job Title:</label>
+      <input type="text" id="job-title" name="job-title" required>
+    </div>
+    <div>
+      <label for="job-description">Description:</label>
+      <textarea id="job-description" name="job-description" required></textarea>
+    </div>
+    <div>
+      <label for="join-date">Join Date:</label>
+      <input type="month" id="join-date" name="join-date" required>
+    </div>
+    <div>
+      <label for="end-date">End Date:</label>
+      <input type="month" id="end-date" name="end-date" required>
+    </div>
+    <div>
+      <button type="submit">Save Changes</button>
+    </div>
+  </form>
+  <script src="editpage.js"></script>
+</body>
+</html>

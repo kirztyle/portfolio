@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+  background-color: cornsilk;
+}
+
+/* Gaya untuk heading utama */
+.header {
+    text-align: center;
+    margin:0;
+    color: #ffffff;
+    background-color: rgb(118, 118, 78);
+    padding: 20px ;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+.header a{
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+} 
+  
+header{
+  text-align: center;
+  padding: 15px;
+  font-size: large;
+  font-weight: bold;
+}
+
+  /* Gaya untuk container data */
+  #data-container {
+    width: 50%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Gaya untuk setiap job */
+  .job {
+    display: flex; /* Gunakan Flexbox */
+    align-items: flex-start; /* Selaraskan elemen di atas */
+    gap: 20px; /* Jarak antara gambar dan teks */
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+
+  /* Gaya untuk konten teks */
+  .job-content {
+    flex: 1; /* Biarkan teks mengambil ruang yang tersedia */
+  }
+  
+  /* Gaya untuk gambar */
+  .job-image {
+    width: 15%;
+    border-radius: 5px; /* Tambahkan sudut melengkung */
+    object-fit: cover; /* Sesuaikan gambar agar tetap rapi */
+  }
+  
+  /* Gaya untuk judul pekerjaan */
+  .job h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  /* Gaya untuk teks deskripsi */
+  .job p {
+    margin: 5px 0;
+  }
+  
+  /* Gaya untuk link lampiran */
+  .job a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .job a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Gaya untuk gambar lampiran */
+  .job img {
+    max-width: 100%;
+    height: 80%;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+
+ /* Gaya untuk container data */
+ #service-container {
+  width: 50%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk setiap job */
+.service {
+  display: flex; /* Gunakan Flexbox */
+  align-items: flex-start; /* Selaraskan elemen di atas */
+  gap: 20px; /* Jarak antara gambar dan teks */
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+/* Gaya untuk konten teks */
+.service-content {
+  flex: 1; /* Biarkan teks mengambil ruang yang tersedia */
+}
+
+/* Gaya untuk gambar */
+.service-image {
+  width: 15%;
+  border-radius: 5px; /* Tambahkan sudut melengkung */
+  object-fit: cover; /* Sesuaikan gambar agar tetap rapi */
+}
+
+/* Gaya untuk judul pekerjaan */
+.service h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+/* Gaya untuk teks deskripsi */
+.service p {
+  margin: 5px 0;
+}
+
+/* Gaya untuk link lampiran */
+.service a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.service a:hover {
+  text-decoration: underline;
+}
+
+/* Gaya untuk gambar lampiran */
+.service img {
+  max-width: 100%;
+  height: 80%;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+#update-form-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+button[type="button"]:hover {
+  background-color: #e53935;
+}

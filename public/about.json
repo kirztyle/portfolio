@@ -1,0 +1,41 @@
+{
+    "about": {
+      "name": "Yane Andini",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus voluptatibus rem dolore at tempora sunt est et numquam consequatur. Possimus rerum, necessitatibus vel animi nulla voluptate laborum! Necessitatibus, facilis fugit",
+      "skills": [
+        {
+          "title": "Graphic Design",
+          "description": "Membuat desain dari hasil diskusi dengan client secara online maupun offline"
+        },
+        {
+          "title": "UI/UX Design",
+          "description": "Mendesain antarmuka pengguna yang interaktif dan mudah digunakan"
+        },
+        {
+            "title": "Jalan jalan",
+            "description": "kemana weh boleh"
+        }
+      ],
+      "experience": [
+        {
+          "title": "Panin Dubai Syariah Bank Officer",
+          "description": "Membuat desain dari hasil diskusi dengan client secara online maupun offline"
+        },
+        {
+          "title": "Panin Dubai Syariah Bank Internship",
+          "description": "Membuat desain dari hasil diskusi dengan client secara online maupun offline"
+        }
+      ],
+      "education": [
+        {
+          "title": "Universitas Indonesia",
+          "year": "2019 - 2023"
+        },
+        {
+          "title": "SMA Negeri 5 Kota Bogor",
+          "year": "2016 - 2019"
+        }
+      ]
+    }
+  }
+  

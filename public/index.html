@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script>c</script>
+  </head>
+</head>
+<body>
+
+<!------------Section navbar--------------->
+<header class="header">
+    <a href="cms.html" class="logo">
+        <b>Yane</b> Andini
+    </a>
+    <ul id="menuList">
+        <li><a href="#about">About me</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="menu-icon">
+        <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+    </div>
+</header>
+<script>
+    let menuList = document.getElementById("menuList")
+    menuList.style.maxHeight = "0px";
+
+    function toggleMenu(){
+        if(menuList.style.maxHeight == "0px")
+    {
+        menuList.style.maxHeight = "600px";
+    }
+    else{
+        menuList.style.maxHeight = "0px";
+    }
+    }
+</script>
+<script src="https://kit.fontawesome.com/76ed3633d2.js" crossorigin="anonymous">
+</script>
+</div>
+
+<!------------Section About--------------->
+<div class="about" id="about"> 
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="About-removebg-preview.png">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title"></h1>
+                <p></p>
+
+                <div class="tab-titles">
+                    <div class="tab-links active-link" onclick="opentab('skills')">Skills</div>
+                    <div class="tab-links" onclick="opentab('experience')">Experience</div>
+                    <div class="tab-links" onclick="opentab('education')">Education</div>
+                </div>
+
+                <div class="tab-contents-wrapper">
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul></ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul></ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="download-btn" href="#">
+                    <p>Download CV</p>
+                    <i class="fa-solid fa-download"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="content.js"></script>
+
+<!------------Section Service------------->
+<div class="service-section" id="service">
+    <div class="services" id="services">
+        <div class="service-container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="prev-btn">&#10094;</button>
+                <div class="services-list" id="services-list">
+                    <!-- Data dari jobhist.json akan ditambahkan di sini -->
+                </div>
+                <button class="carousel-btn next" id="next-btn">&#10095;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-----------My Job History-------------->
+<div class="jobhist-section" id="jobhist">
+    <div class="jobhists" id="jobhists">
+        <div class="job-carousel-container" id="job-carousel-container">
+            <h1 class="sub-title">Job Histories</h1>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="prevo-btn">&#10094;</button>
+                <div class="jobhist-list" id="jobhist-list">
+                    <!-- Data dari jobhist.json akan ditambahkan di sini -->
+                </div>
+                <button class="carousel-btn next" id="nexto-btn">&#10095;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="about.js"></script>
+</body>
+</html>

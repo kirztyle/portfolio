@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porto CMS</title>
+    <link rel="stylesheet" href="/CSS/stylecms.css">
+</head>
+<body>
+    <header>
+        <h1>Content Management </h1>
+        <a href="readjson.html">Lihat halaman penyimpanan</a>
+    </header>
+    
+    <div class="container">
+        <h2>Content Input</h2>
+        <select id="section" onchange="tampilkanForm()">
+            <option value="">Pilih Konten</option>
+            <option value="my-work">My Work</option>
+            <option value="my-service">My Service</option>
+        </select>
+        
+        <div id="my-work" class="form-section" style="display: none;">
+            <form id="my-work-form" enctype="multipart/form-data" method="POST" action="/submit-job-history">
+                <div class="kolom">
+                    <label for="job-title">*Isi nama Pekerjaan</label>
+                    <input type="text" name="job-title" id="job-title" placeholder="  Nama pekerjaan">
+                </div>
+    
+                <div class="kolom">
+                    <label for="job-description">*Deskripsi Pekerjaan:</label>
+                    <textarea name="job-description" id="job-description" placeholder="  Isi deskripsi lengkap"></textarea>
+                </div>
+                
+                <div class="kolom">
+                    <label for="join-date">*Tahun Mulai:</label>
+                    <input type="month" name="join-date" id="join-date">
+                </div>
+                
+                <div class="kolom">
+                    <label for="end-date">*Tahun Berakhir:</label>
+                    <input type="month" name="end-date" id="end-date">
+                </div>
+    
+                <div class="kolom">
+                    <label for="attachment">Lampiran: <br>Laporan Kerja/Screenshot</label>
+                    <input type="file" name="attachment" id="work-attachment">
+                </div>
+                <button type="submit">Upload Riwayat Kerja</button>
+            </form>
+        </div>
+    
+        <div id="my-service" class="form-section" style="display: none;">
+            <form id="my-service-form" enctype="multipart/form-data" method="POST" action="/submit-service">
+                <div class="kolom">
+                    <label for="service-title">*Isi nama layanan</label>
+                    <input type="text" name="service-title" id="service-title" placeholder="  Nama layanan">
+                </div>
+    
+                <div class="kolom">
+                    <label for="service-description">*Deskripsi layanan:</label>
+                    <textarea name="service-description" id="service-description" placeholder="  Isi deskripsi lengkap"></textarea>
+                </div>
+    
+                <div class="kolom">
+                    <label for="service-tools">*Tools yang digunakan:</label>
+                    <textarea name="service-tools" id="service-tools" placeholder="  cth:(Excel, Word dll)"></textarea>
+                </div>
+    
+                <div class="kolom">
+                    <label for="attachment">Lampiran: <br>Contoh tampilan layanan</label>
+                    <input type="file" name="attachment" id="attachment">
+                </div>
+                <button type="submit">Upload Service</button>
+            </form>
+        </div>
+    </div>    
+    <script src="cms.js"></script>
+</body>
+</html>
